@@ -71,7 +71,26 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     <!--div id="footer">           
             <?php //echo $this->element('sql_dump'); ?>
     </div-->
-   
+    <div id="tags">
+            <ul>
+                    <li class="tag1"><a href="#">Java</a></li> 
+                    <li class="tag2"><a href="#">Spring Framework</a></li>
+                    <li class="tag3"><a href="#">JSon - XML</a></li>
+                    <li class="tag2"><a href="#">PHP</a></li>
+                    <li class="tag4"><a href="#">MySQL</a></li>
+                    <li class="tag1"><a href="#">Hibernate</a></li>
+                    <li class="tag1"><a href="#">Quisque dui lacus</a></li>
+                    <li class="tag5"><a href="#">Spring Framework</a></li>
+                    <li class="tag2"><a href="#">Dictum non</a></li>
+                    <li class="tag1"><a href="#">Venenatis et tortor</a></li>
+                    <li class="tag3"><a href="#">Suspendisse mauris</a></li>
+                    <li class="tag4"><a href="#">In accumsan </a></li>
+                    <li class="tag1"><a href="#">Spring Framework</a></li>
+                    <li class="tag5"><a href="#">Mauris eget felis</a></li>
+                    <li class="tag1"><a href="#">Suspendisse</a></li>
+                    <li class="tag2"><a href="#">condimentum eleifend nulla</a></li>
+            </ul>
+    </div>
     <?php
         echo $this->Html->script('jquery');
         echo $this->Html->script('classie');

@@ -16,10 +16,20 @@ class PostsController extends AppController {
         }
         
         $this->loadModel("Categorie");
+        $this->loadModel("SCategorie");
+
+        $current_categorie=$this->Categorie->findById($post['Post']['id_categ']);       
+        $current_scategorie =$this->SCategorie->findById($post['Post']['id_scateg']);
+                 
+        $info=array(
+            'current_categorie_id'=>$current_categorie['Categorie']['id'],
+            'current_categorie'=>$current_categorie['Categorie']['libelle'],
+            'current_scategorie'=>$current_scategorie['SCategorie']['libelle']
+        );
+        $this->set('info',$info);
+        
         $this->set('categories', $this->Categorie->find('all'));
         $this->set('post', $post);
-
-        //$this->viewAsync($id);
         $this->render();
     }
     public function display($id_scategorie=1) {
