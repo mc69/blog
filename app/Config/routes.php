@@ -3,6 +3,7 @@
         Router::connect('/', array('controller' => 'posts', 'action' => 'index'));
         
         Router::connect('/tutos/*', array('controller'=>'posts','action'=>'display'));
+        Router::connect('/sc/*', array('controller'=>'posts','action'=>'display2'));
         Router::connect('/tuto/*', array('controller'=>'posts','action'=>'view'));
         
         /*

@@ -222,6 +222,8 @@ section,
 summary {
   display: block;
 }
+
+/*
 .well blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
@@ -779,7 +781,7 @@ fieldset[disabled] .btn-link:focus {
 .btn-block + .btn-block {
   margin-top: 5px;
 }
-
+*/
 /* Tag cloud */
 
 #tags ul{

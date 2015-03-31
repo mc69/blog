@@ -300,9 +300,9 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  //font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.428571429;
+  //line-height: 1.428571429;
   color: #333333;
   background-color: #ffffff;
 }
@@ -4613,7 +4613,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 8px 15px;
   margin-bottom: 20px;
   list-style: none;
-  background-color: #f5f5f5;
+  //background-color: #f5f5f5;
   border-radius: 4px;
 }
 
@@ -6805,7 +6805,5 @@ td.visible-print {
   }
 }
 
-a, a:hover{
-    text-decoration: none;
-    font-size: 12pt;
-}
+
+

@@ -5,12 +5,28 @@ class PostsController extends AppController {
     public $components = array('Session', 'RequestHandler');
 
     
-    public function view($id=null) {
-        if (!$id) {
+    public function index($id_categorie=null) {   
+        $this->loadModel("Categorie");
+        
+        $categories=$this->Categorie->find('all');
+        $this->set('categories', $categories); 
+        
+        if($id_categorie){                  
+            //$this->set('posts', $this->Post->find('all',array('conditions'=>array('Post.id_categ'=>$id_categorie))));
+            $info=array('current_categorie_id'=>$id_categorie,'current_categorie'=>$this->Categorie->findById($id_categorie));
+        }else{
+            $info=array(); //'current_categorie_id'=>1,'current_categorie'=>'Java-Core');
+        }
+        $this->set('display', 1); //categories!
+        $this->set('info',$info);
+    }
+    
+    public function view($id_post=null) {
+        if (!$id_post) {
             throw new NotFoundException(__('Article introuvable!'));
         }
 
-        $post = $this->Post->findById($id);
+        $post = $this->Post->findById($id_post);
         if (!$post) {
             throw new NotFoundException(__('Article introuvable!'));
         }
@@ -49,13 +65,42 @@ class PostsController extends AppController {
         $info=array(
             'current_categorie_id'=>$current_categorie_id,
             'current_categorie'=>$current_categorie['Categorie']['libelle'],
-            'current_scategorie'=>$current_scategorie['SCategorie']['libelle']
+            'current_scategorie'=>$current_scategorie['SCategorie']['libelle']//,
+            //'current_photo'=>$current_categorie['Categorie']['photo']
         );
         $this->set('info',$info);
         
         $this->set('display', 2); //posts!
         $this->render('index');
     }
+    public function display2($id_categorie=1) {
+        $this->loadModel("Categorie");
+        $this->loadModel("SCategorie");
+         
+        $categories=$this->Categorie->find('all');
+        $this->set('categories', $categories);
+        
+        $scategories = $this->SCategorie->find('all',array('conditions'=>array('SCategorie.id_categ'=>$id_categorie)));
+        $this->set('scategories', $scategories); 
+        
+        //$this->set('posts', $this->Post->find('all',array('conditions'=>array('Post.id_scateg'=>$id_scategorie))));
+                
+        //$current_scategorie=$this->SCategorie->findById($id_scategorie);
+        //$current_categorie_id=$current_scategorie['SCategorie']['id_categ'];
+        $current_categorie=$this->Categorie->findById($id_categorie);
+                 
+        $info=array(
+            'current_categorie_id'=>$id_categorie,
+            'current_categorie'=>$current_categorie['Categorie']['libelle'],
+            'current_photo'=>$current_categorie['Categorie']['photo']
+            //'current_scategorie'=>$current_scategorie['SCategorie']['libelle']
+        );
+        $this->set('info',$info);
+        
+        $this->set('display', 3); //Sous-Categories!
+        $this->render('index');
+    }
+    
     public function async($id_categorie) {
         $this->loadModel("SCategorie");
         
@@ -70,24 +115,11 @@ class PostsController extends AppController {
         $info=array('current_categorie_id'=>$id_categorie,'current_categorie'=>$current['Categorie']['libelle']);
         $this->set('info',$info);
                 
-        $this->set('display', 1); //posts!
+        $this->set('display', 1); //categories!
         $this->render();
     }
     
-    public function index($id_categorie=null) {   
-        $this->loadModel("Categorie");
-        $categories=$this->Categorie->find('all');
-        $this->set('categories', $categories); 
-        
-        if($id_categorie){                  
-            $this->set('posts', $this->Post->find('all',array('conditions'=>array('Post.id_categ'=>$id_categorie))));
-            $info=array('current_categorie_id'=>$id_categorie,'current_categorie'=>$this->Categorie->findById($id_categorie));
-        }else{
-            $info=array('current_categorie_id'=>1,'current_categorie'=>'Java-Core');
-        }
-        $this->set('display', 1); //posts!
-        $this->set('info',$info);
-    }
+    
 
     
     /*
@@ -122,7 +154,7 @@ class PostsController extends AppController {
      * */
 
 
-    
+    /*
     public function edit($id = null) {
         if (!$id) {
             throw new NotFoundException(__('Article introuvable!'));
@@ -173,4 +205,6 @@ class PostsController extends AppController {
 
         return $this->redirect(array('action' => 'index'));
     }
+    */
+    
 }

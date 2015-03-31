@@ -12,13 +12,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-
-		echo $this->Html->css('cake.generic');  
+                echo $this->Html->css('bootstrap');
                 echo $this->Html->css('menu');
                 echo $this->Html->css('sh/shCoreDefault');
-                
-                echo $this->Html->css('main');
-                
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
@@ -41,7 +37,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <?php  
                             if(isset($info['current_categorie'])){
                                 echo $this->Html->link('Accueil',array('controller' => 'posts', 'action' => 'index'));
-                                echo '<a href="#" id="current_categ">'.$info['current_categorie'].'</a>';
+                                echo $this->Html->link($info['current_categorie'],array('controller' => 'posts', 'action' => 'display2',$info['current_categorie_id']),array('id'=>'current_categ'));
+                                //echo '<a href="#" id="current_categ">'.$info['current_categorie'].'</a>';
                           
                                 if(isset($info['current_scategorie'])){
                                     echo '<a href="#" id="current_scateg">'.$info['current_scategorie'].'</a>';
@@ -58,7 +55,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     </div>
                     -->
                 </header>
-                <section class="related" style="margin-left: 15%;">
+                <section class="related" style="margin: 50px 5% 20px 15%; min-height: 800px; padding: 0; ">
             
                     <?php echo $this->Session->flash(); ?>
                     <?php echo $this->fetch('content'); ?>
@@ -73,22 +70,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     </div-->
     <div id="tags">
             <ul>
-                    <li class="tag1"><a href="#">Java</a></li> 
-                    <li class="tag2"><a href="#">Spring Framework</a></li>
-                    <li class="tag3"><a href="#">JSon - XML</a></li>
-                    <li class="tag2"><a href="#">PHP</a></li>
-                    <li class="tag4"><a href="#">MySQL</a></li>
-                    <li class="tag1"><a href="#">Hibernate</a></li>
-                    <li class="tag1"><a href="#">Quisque dui lacus</a></li>
-                    <li class="tag5"><a href="#">Spring Framework</a></li>
-                    <li class="tag2"><a href="#">Dictum non</a></li>
-                    <li class="tag1"><a href="#">Venenatis et tortor</a></li>
-                    <li class="tag3"><a href="#">Suspendisse mauris</a></li>
-                    <li class="tag4"><a href="#">In accumsan </a></li>
-                    <li class="tag1"><a href="#">Spring Framework</a></li>
-                    <li class="tag5"><a href="#">Mauris eget felis</a></li>
-                    <li class="tag1"><a href="#">Suspendisse</a></li>
-                    <li class="tag2"><a href="#">condimentum eleifend nulla</a></li>
+                    <li class="tag<?=rand(2, 5) ?>"><a href="#">Java</a></li> 
+                    <li class="tag<?=rand(2, 5) ?>"><a href="#">Spring Framework</a></li>
+                    <li class="tag<?=rand(2, 5) ?>"><a href="#">JSon - XML</a></li>
+                    <li class="tag<?=rand(2, 5) ?>"><a href="#">PHP</a></li>
+                    <li class="tag<?=rand(2, 5) ?>"><a href="#">MySQL</a></li>
+                    <li class="tag<?=rand(2, 5) ?>"><a href="#">Hibernate</a></li>
+                    <li class="tag<?=rand(2, 5) ?>"><a href="#">Design Patterns</a></li>
+                    <li class="tag<?=rand(2, 5) ?>"><a href="#">JEE</a></li>
             </ul>
     </div>
     <?php
@@ -107,6 +96,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         $(function(){
                   
             SyntaxHighlighter.all();
+                        
+            $('.title-image').click(function(){
+                var ww = $( window ).width();
+                var wd = $( document ).width();
+                alert(ww+" "+wd);
+            });
         });
     </script>
 </body>
