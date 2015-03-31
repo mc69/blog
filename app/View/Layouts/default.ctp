@@ -11,13 +11,16 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<?php echo $this->fetch('title'); ?>
 	</title>
 	<?php
-		echo $this->Html->meta('icon');
+		//echo $this->Html->meta('icon');
+                
                 echo $this->Html->css('bootstrap');
                 echo $this->Html->css('menu');
+                
                 echo $this->Html->css('sh/shCoreDefault');
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
+                
+		//echo $this->fetch('meta');
+		//echo $this->fetch('css');
+		//echo $this->fetch('script');
 	?>
 </head>
 <body>
@@ -70,14 +73,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     </div-->
     <div id="tags">
             <ul>
-                    <li class="tag<?=rand(2, 5) ?>"><a href="#">Java</a></li> 
-                    <li class="tag<?=rand(2, 5) ?>"><a href="#">Spring Framework</a></li>
-                    <li class="tag<?=rand(2, 5) ?>"><a href="#">JSon - XML</a></li>
-                    <li class="tag<?=rand(2, 5) ?>"><a href="#">PHP</a></li>
-                    <li class="tag<?=rand(2, 5) ?>"><a href="#">MySQL</a></li>
-                    <li class="tag<?=rand(2, 5) ?>"><a href="#">Hibernate</a></li>
-                    <li class="tag<?=rand(2, 5) ?>"><a href="#">Design Patterns</a></li>
-                    <li class="tag<?=rand(2, 5) ?>"><a href="#">JEE</a></li>
+                <?php foreach ($categories as $categorie): 
+                    echo '<li class="tag'.rand(1, 8).'"><a href="#">'.$categorie['Categorie']['libelle'].'</a></li> ';
+                endforeach; ?>
+                
+                   
             </ul>
     </div>
     <?php

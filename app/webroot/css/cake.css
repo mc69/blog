@@ -269,7 +269,7 @@ p.notice {
   clear: both;
   background-repeat: repeat-x;
   margin-bottom: 18px;
-  padding: 7px 14px;
+  padding: 2px 5px;
   border-radius: 3px;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.24);
 }
