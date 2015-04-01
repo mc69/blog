@@ -9,7 +9,7 @@
 
         </p>
             
-        <pre class='brush: java'>
+        <pre class="brush: java; class-name : 'code-bloc'; collapse: false; highlight: [1, 23]" title="">
 
         </pre>
         
@@ -17,7 +17,7 @@
             
         </p>
         
-        <pre class="brush: java;">
+        <pre class="brush: java; class-name : 'code-bloc'; collapse: false; highlight: [1, 23]" title="">
         
         </pre>
         

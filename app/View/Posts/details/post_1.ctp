@@ -1,6 +1,6 @@
 <article id="post_content" class="" style="color: black;text-align: justify;">
     <header class="notice">
-            <h3><?php echo $post['Post']['libelle']; ?></h3>
+        <h3 style="color: #428bcb;"><?php echo $post['Post']['libelle']; ?></h3>
             <small><?php echo $post['Post']['date_create']; ?></small>     
     </header>   
     <div class="post_content">
@@ -9,7 +9,7 @@
 
         </p>
             
-        <pre class='brush: java'>
+        <pre class="brush: java; class-name : 'code-bloc'; collapse: false; highlight: [1, 23]" title="">
 
         </pre>
         

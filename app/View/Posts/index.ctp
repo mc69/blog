@@ -7,23 +7,39 @@
     $item_name="Categorie";
     $item_action='display2';
  }
- else if($display==2 && isset($posts)){
-    $items=$posts; 
-    $item_name="Post";
-    $item_action='view';
- } 
  else if($display==3 && isset($scategories)){
     $items=$scategories; 
     $item_name="SCategorie";
     $item_action='display';
  } 
+ else if($display==2 && isset($posts)){
+    $items=$posts; 
+    $item_name="Post";
+    $item_action='view';
+ }
 
 ?>
-
+<style>
+    .well{
+        padding: 0px 0px 0px 10px !important;
+    }
+    .post_link, hr{
+        font-size: 14pt;
+    }
+    hr{
+        margin: 5px !important;
+        height: 12px;
+        border: 0;
+        box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
+    }
+    
+</style>
 <?php
 $item_class="well";
-if($display!=2){
+if($display==1){
     $item_class .=" col-lg-3 col-lg-offset-1"; 
+}else{
+    $item_class .=" col-lg-6 col-lg-offset-2"; 
 }
     
 ?>
@@ -33,10 +49,30 @@ if($display!=2){
             <div class="entry-meta00">
                 <h3>
                     <?php
-                        echo $this->Html->link(
-                            $item[$item_name]['libelle'],
-                            array('action' => $item_action, $item[$item_name]['id'])
-                        );
+                        if($display==1){
+                            echo $this->Html->link(
+                                utf8_encode($item[$item_name]['libelle']),
+                                array('action' => $item_action, $item[$item_name]['id'])
+                            );
+                        }else if($display==3){
+                            echo '<h4>'.utf8_encode($item[$item_name]['libelle']).'</h4>';
+                            if(isset($posts)){
+                                foreach ($posts as $post) {
+                                    if($post['Post']['id_scateg']==$item[$item_name]['id']){
+                                        
+                                        echo $this->Html->link(
+                                            utf8_encode($post['Post']['libelle']),
+                                            array('action' => 'view', $post['Post']['id']),
+                                            array('class'=>'post_link')    
+                                        );
+                                        
+                                        echo '<br/>'.utf8_encode($post['Post']['desc']).'<hr/>';
+                                    }
+                                }
+                            }
+                        }else{
+                            echo '<h3>'.utf8_encode($item[$item_name]['libelle']).'</h3>'; 
+                        }
                     ?>
                 </h3>
                 <span class="cat-links00">
@@ -49,13 +85,16 @@ if($display!=2){
         </header>
         <div style="color:black;">
             <?php
-                if(isset($item[$item_name]['photo'])){
+                if(isset($item[$item_name]['photo']) && $display==1){
                     echo $this->Html->image('http://localhost/blog/img/'.$item[$item_name]['photo'].'.png', array('style' => 'height:80px;float:left;margin-right:10px;'));
-                }else if(isset($info['current_photo'])){
-                    echo $this->Html->image('http://localhost/blog/img/'.$info['current_photo'].'.png', array('style' => 'height:60px;float:left;margin-right:10px;'));
                 }
+                /*else if(isset($info['current_photo'])){
+                    echo $this->Html->image('http://localhost/blog/img/'.$info['current_photo'].'.png', array('style' => 'height:60px;float:left;margin-right:10px;'));
+                }*/
             ?>
-            <p>The builder pattern, as name implies, is an alternative way to construct complex objects. This should be used only when you want to build different immutable objects using same object building process. </p>
+            <p>
+                <?= utf8_encode($item[$item_name]['desc']) ?>
+            </p>
             <!--a class="btn btn-primary" href="#">&gt;</a-->
         </div>
         <footer class="entry-meta">

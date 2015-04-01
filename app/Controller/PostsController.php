@@ -98,6 +98,8 @@ class PostsController extends AppController {
             );
             $this->set('info',$info);
         }
+                
+        $this->set('posts', $this->Post->find('all',array('conditions'=>array('Post.id_categ'=>$id_categorie))));
         
         $this->set('display', 3); //Sous-Categories!
         $this->render('index');

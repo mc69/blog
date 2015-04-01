@@ -13,7 +13,7 @@
             Methods inside HashTable are defined synchronized as below:
         </p>
             
-        <pre class='brush: java'>
+        <pre class="brush: java; class-name : 'code-bloc'; collapse: false; highlight: [1, 23]" title="">
             public synchronized boolean contains(Object obj){ ... }
             public synchronized boolean containsKey(Object obj){ ... }
             public synchronized Object get(Object obj){ ... }
@@ -25,7 +25,7 @@
             Hashtable does not allow null keys or values. HashMap allows one null key (other null keys will simply overwrite first null key) and any number of null values.
         </p>
         
-        <pre class="brush: java;">
+        <pre class="brush: java; class-name : 'code-bloc'; collapse: false; highlight: [1, 23]" title="">
                 Hashtable<String, String> hashTable = new Hashtable<String, String>();
                 hashTable.put(null, "value");
                 //OR

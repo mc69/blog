@@ -48,8 +48,14 @@
   font-weight: normal !important;
   font-style: normal !important;
   font-size: 1em !important;
-  min-height: inherit !important;
-  min-height: auto !important;
+  /*min-height: inherit !important; */
+  /*min-height: auto !important;*/
+  direction: ltr !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -ms-box-shadow: none !important;
+  -o-box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 .syntaxhighlighter {
@@ -57,7 +63,11 @@
   margin: 1em 0 1em 0 !important;
   position: relative !important;
   overflow: auto !important;
+  overflow-y: hidden !important;
   font-size: 1em !important;
+}
+.syntaxhighlighter code {
+  display: inline !important;
 }
 .syntaxhighlighter.source {
   overflow: hidden !important;
@@ -72,6 +82,7 @@
   white-space: pre !important;
 }
 .syntaxhighlighter table {
+  table-layout: auto !important;
   width: 100% !important;
 }
 .syntaxhighlighter table caption {
